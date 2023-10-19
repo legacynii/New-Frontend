@@ -65,10 +65,13 @@ const Home = () => {
           // Store the JWT token in localstorage
           const accessToken = response.data.accessToken;
           localStorage.setItem('authToken', accessToken);
-      
+          console.log('Received token:', accessToken);
+
+
           // Retrieve the JWT token from localstorage
           const authToken = localStorage.getItem('authToken');
-      
+          console.log('Received token:', authToken);
+
           // Send a GET request to check authentication
           const authenticationResponse = await axios.get('https://new-backend-jiuq.onrender.com/check-auth', {
             headers: {
