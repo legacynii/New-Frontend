@@ -1,0 +1,31 @@
+.rowHighlight:hover {
+    background-color:#f5f5f5 ;
+}
+
+.logout-icon-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .logout-icon {
+    color: blue;
+    font-size: 2em;
+    margin-right: 16px;
+    cursor: pointer;
+    transition: color 0.3s; 
+  }
+
+  .logout-icon:hover {
+    color: red; 
+  }
+
+
+  .pointerCursor {
+    cursor: pointer;
+  }
+  
+  
+  
+  
+  
+  
