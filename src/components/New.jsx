@@ -33,7 +33,7 @@ const New = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:5000/members')
+    axios.get('https://new-backend-jiuq.onrender.com/members')
       .then(response => {
         setSearchResults(response.data);
         setLoading(false);
@@ -48,7 +48,7 @@ const New = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/search', {
+      const response = await axios.get('https://new-backend-jiuq.onrender.com/api/search', {
         params: {
           query: searchTerm,
           fields: ['name', 'dateofbirth','residenceaddress','occupation', 'phonenumber', 'maritalstatus'],

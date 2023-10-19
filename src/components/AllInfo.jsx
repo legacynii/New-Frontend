@@ -33,7 +33,7 @@ const AllInfo = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/members/${id}`);
+        const response = await axios.get(`https://new-backend-jiuq.onrender.com/members/${id}`);
         const result = response.data;
 
         setData(result);
@@ -56,7 +56,7 @@ const AllInfo = () => {
 
   const handleSubmit = async () => {
     try {
-      await axios.put(`http://localhost:5000/members/${id}`, data);
+      await axios.put(`https://new-backend-jiuq.onrender.com/members/${id}`, data);
       setIsEditing(false);
       alert("Successfully edited!");
     } catch (err) {
@@ -70,7 +70,7 @@ const AllInfo = () => {
 
     if (confirmed) {
       try {
-        await axios.delete(`http://localhost:5000/members/${id}`);
+        await axios.delete(`https://new-backend-jiuq.onrender.com/members/${id}`);
         navigate("/new");
         alert("Successfully deleted!");
       } catch (error) {

@@ -78,7 +78,7 @@ const NewMember = () => {
           setLoadingResidenceAddress(true);
 
       const body = { name, dateofbirth, residenceaddress, occupation, phonenumber, maritalstatus, dayborn, emailaddress, hobbies, hometownaddress, parentsname, age };
-          const response = await axios.post('http://localhost:5000/members', body);
+          const response = await axios.post('https://new-backend-jiuq.onrender.com/members', body);
         // await axios.post('https://ch-database-backend-4m31.onrender.com/members', body);
         // Redirect or handle success as needed
         navigate("/new");

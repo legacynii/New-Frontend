@@ -60,7 +60,7 @@ const Home = () => {
         try {
           // Make a POST request to the login endpoint
           const body = { staff_id };
-          const response = await axios.post('http://localhost:5000/login', body);
+          const response = await axios.post('https://new-backend-jiuq.onrender.com/login', body);
       
           // Store the JWT token in localstorage
           const accessToken = response.data.accessToken;
@@ -70,7 +70,7 @@ const Home = () => {
           const authToken = localStorage.getItem('authToken');
       
           // Send a GET request to check authentication
-          const authenticationResponse = await axios.get('http://localhost:5000/check-auth', {
+          const authenticationResponse = await axios.get('https://new-backend-jiuq.onrender.com/check-auth', {
             headers: {
               Authorization: `Bearer ${authToken}`,
             },
