@@ -25,7 +25,7 @@ const New = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [filterOption, setFilterOption] = useState('all');
   const [loading, setLoading] = useState(true); // Define the loading state and set it to true initially
-
+  
   const navigate = useNavigate();
 
 
@@ -48,12 +48,17 @@ const New = () => {
 
   const handleSearch = async () => {
     try {
+       //validate the search query
+       if (!searchTerm || searchTerm.length < 3) {
+        console.error('Please enter at least 3 characters');
+        return;
+      }
       const response = await axios.get('https://new-backend-jiuq.onrender.com/api/search', {
         params: {
           query: searchTerm,
-          fields: ['name', 'dateofbirth','residenceaddress','occupation', 'phonenumber', 'maritalstatus'],
+          fields: ['name', 'occupation'],
         },
-      })
+      });
 
       if (response && response.data) {
         const data = response.data;
@@ -61,14 +66,7 @@ const New = () => {
       } else {
         console.error('API response is missing data.');
       }
-      const data = response.data;
-      //validate the search query
-      if (!searchTerm || searchTerm.length < 3) {
-        console.error('Please enter at least 3 characters');
-        return;
-      }
-  
-      setSearchResults(data);
+      
     } catch (error) {
       console.error('Error searching:', error);
     }
