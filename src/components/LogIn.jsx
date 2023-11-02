@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { InputAdornment, Typography, Grid, Paper, Avatar, TextField, Link } from '@material-ui/core'
+import { InputAdornment, Typography, Grid, Paper, CircularProgress, Avatar, TextField, Link } from '@material-ui/core'
 import presby from '../images/presby.png'
 import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
@@ -33,6 +33,7 @@ const Home = () => {
 
     const [staff_id, setStaffId] = useState('');
   const [showStaffId, setShowStaffId] = useState(false);
+  const [loading, setLoading] = useState(false);
     // const [password, setPassword] = useState('');
     // const [rememberMe, setRememberMe] = useState(false);
 
@@ -45,7 +46,7 @@ const Home = () => {
 
     const handleSignIn = async (e) => {
         e.preventDefault(); // Prevent the default form submission
-      
+      setLoading(true);
         // Validate staff_id input
         if (!staff_id.trim()) {
           alert("Please enter a staff ID.");
@@ -93,6 +94,8 @@ const Home = () => {
           if (error.response && error.response.status === 404) {
             alert('Incorrect staff ID. Please try again!');
           }
+        } finally {
+          setLoading(false);
         }
       };
       
@@ -154,7 +157,7 @@ const Home = () => {
                     }
                     label="Remember me"
                 /> */}
-                <Button type="submit" color="primary" variant="contained" style={btnStyle} fullWidth onClick={handleSignIn}>Sign In</Button>
+              <Button type="submit" color="primary" variant="contained" style={btnStyle} fullWidth onClick={handleSignIn} disabled={loading}>{loading ? <CircularProgress size={24} color="inherit" /> : 'Sign In'}</Button>
                 </form>
                 {/* <Typography>
                     <Link href="#" >
